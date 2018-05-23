@@ -17,7 +17,7 @@ package ltistarter.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.CounterService;
+//import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +31,9 @@ public class BaseController {
 
     final static Logger log = LoggerFactory.getLogger(BaseController.class);
 
-    @Autowired
-    @SuppressWarnings("SpringJavaAutowiringInspection")
-    CounterService counterService;
+//    @Autowired
+//    @SuppressWarnings("SpringJavaAutowiringInspection")
+//    CounterService counterService;
 
     /**
      * Just populate some common model stuff for less repeating

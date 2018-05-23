@@ -27,6 +27,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -58,11 +59,13 @@ public class JPATests extends BaseApplicationTest {
         key = ltiKeyRepository.findByKeyKey("key");
         assertNotNull(key);
         assertEquals("secret", key.getSecret());
-        LtiKeyEntity key2 = ltiKeyRepository.findOne(key.getKeyId());
+//        LtiKeyEntity key2 = ltiKeyRepository.findOne(key.getKeyId());
+        LtiKeyEntity key2 = ltiKeyRepository.findById(key.getKeyId()).get();
         assertNotNull(key2);
         assertEquals(key, key2);
 
-        key = ltiKeyRepository.findOne(key.getKeyId());
+//        key = ltiKeyRepository.findOne(key.getKeyId());
+        key = ltiKeyRepository.findById(key.getKeyId()).get();
         assertNotNull(key);
 
         ltiKeyRepository.delete(key);
@@ -115,8 +118,11 @@ public class JPATests extends BaseApplicationTest {
         profiles = profileRepository.findAll();
         assertTrue(profiles.iterator().hasNext());
         assertEquals(2, CollectionUtils.size(profiles.iterator()));
-        profile = profileRepository.findOne(91919l);
-        assertNull(profile);
+//        profile = profileRepository.findOne(91919l);
+//        assertNull(profile);
+        Optional<ProfileEntity> profileOpt = profileRepository.findById(91919l);
+        assertEquals(profileOpt, Optional.empty());
+
         profile = profileRepository.findByProfileKey("AaronZeckoski");
         assertNotNull(profile);
         assertTrue(profile.getSsoKeys().isEmpty());

@@ -34,7 +34,7 @@ public class HomeController extends BaseController {
         log.info("HOME: " + req);
         commonModelPopulate(req, principal, model);
         model.addAttribute("name", "HOME");
-        counterService.increment("home");
+//        counterService.increment("home");
         return "home"; // name of the template
     }
 

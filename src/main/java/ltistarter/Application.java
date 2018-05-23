@@ -14,14 +14,8 @@
  */
 package ltistarter;
 
-import ltistarter.lti.LTIConsumerDetailsService;
-import ltistarter.lti.LTIDataService;
-import ltistarter.lti.LTIOAuthAuthenticationHandler;
-import ltistarter.lti.LTIOAuthProviderProcessingFilter;
-import ltistarter.oauth.MyConsumerDetailsService;
-import ltistarter.oauth.MyOAuthAuthenticationHandler;
-import ltistarter.oauth.MyOAuthNonceServices;
-import ltistarter.oauth.ZeroLeggedOAuthProviderProcessingFilter;
+import javax.annotation.PostConstruct;
+
 import org.h2.server.web.WebServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
@@ -53,7 +47,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringValueResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import javax.annotation.PostConstruct;
+import ltistarter.lti.LTIConsumerDetailsService;
+import ltistarter.lti.LTIDataService;
+import ltistarter.lti.LTIOAuthAuthenticationHandler;
+import ltistarter.lti.LTIOAuthProviderProcessingFilter;
+import ltistarter.oauth.MyConsumerDetailsService;
+import ltistarter.oauth.MyOAuthAuthenticationHandler;
+import ltistarter.oauth.MyOAuthNonceServices;
+import ltistarter.oauth.ZeroLeggedOAuthProviderProcessingFilter;
 
 @ComponentScan("ltistarter")
 @Configuration
